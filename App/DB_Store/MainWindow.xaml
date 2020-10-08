@@ -1,0 +1,472 @@
+﻿<Window x:Class="DB_Store.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_Store"
+        mc:Ignorable="d"
+        Title="MainWindow"
+        Width="1200"
+        Height="629"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid x:Name="titleBar" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="1200" Background="#272f3c" MouseDown="titleBar_MouseDown">
+            <Label Content="Детский сад ''Росинка'' " HorizontalAlignment="Left" Margin="4,3,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#ffffff"/>
+            <Button x:Name="buttonClose" HorizontalAlignment="Left" Height="35" Margin="1165,0,0,0" VerticalAlignment="Top" Width="35" Style="{StaticResource TitleBarButtonClose}" Click="buttonClose_Click">
+                <Image HorizontalAlignment="Left" Height="18" Width="18" Source="Icons\Close.png"/>
+            </Button>
+            <Button x:Name="buttonMinimize" HorizontalAlignment="Left" Height="35" Margin="1130,0,0,0" VerticalAlignment="Top" Width="35" Style="{StaticResource TitleBarButtonMinimize}" Click="buttonMinimize_Click">
+                <Image HorizontalAlignment="Left" Height="18" Width="18" Source="Icons\Minimize.png"/>
+            </Button>
+        </Grid>
+        <Grid HorizontalAlignment="Right" Height="594" Margin="0,35,0,0" VerticalAlignment="Top" Width="260" Background="#f3f2f2">
+            <!-- Марки/Brands -->
+            <Grid x:Name="gridBrands" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <TextBox x:Name="textBoxBrand" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <Label Content="Имя" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Телефон" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Пасспорт" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+
+                <Button x:Name="buttonUpdateBrands" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonBrands_Click"/>
+                <TextBox x:Name="textBoxBrand_Copy" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,109,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy1" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,170,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy2" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,229,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy3" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,288,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy4" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,347,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,318,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">гггг-мм-дд</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <ComboBox x:Name="comboBoxSubjects" Background="#ffffff" HorizontalAlignment="Left" Margin="10,406,0,0" VerticalAlignment="Top" Width="240" Height="30" IsEditable="True" >
+                    <ComboBoxItem Content="Арифметика"/>
+                    <ComboBoxItem Content="ИЗО"/>
+                    <ComboBoxItem Content="Физкультура"/>
+                    <ComboBoxItem Content="Музыка"/>
+                    <ComboBoxItem Content="Чтение"/>
+                    <ComboBoxItem Content="Занятие с логопедов"/>
+                    <ComboBoxItem Content="Занятие с психологом"/>
+                </ComboBox>
+                <Label Content="Предмет" HorizontalAlignment="Left" Margin="10,377,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+
+            </Grid>
+            <!-- Типы/Types -->
+            <Grid x:Name="gridTypes" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <TextBox x:Name="textBoxTutor" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <Label Content="Имя" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Телефон" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Пасспорт" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+
+                <TextBox x:Name="textBoxBrand_CopyTutor" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,109,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy1Tutor" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,170,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy2Tutor" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,229,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy3Tutor" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,288,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy4Tutor" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,347,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,318,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">гггг-мм-дд</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <Button x:Name="buttonUpdateTypes" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonTypes_Click"/>
+            </Grid>
+            <!-- Модели/Models -->
+            <Grid x:Name="gridModels" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <TextBox x:Name="textBoxBaby" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,45,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <Label Content="Имя" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,141,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Телефон" HorizontalAlignment="Left" Margin="10,200,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Пасспорт" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="Дата рождения" HorizontalAlignment="Left" Margin="10,318,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+
+                <TextBox x:Name="textBoxBrand_CopyBaby" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,109,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy1Baby" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,170,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy2Baby" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,229,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy3Baby" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,288,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxBrand_Copy4Baby" MaxLength="55" HorizontalAlignment="Left" Height="30" Margin="10,347,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}"  TextChanged="TextChangedCheck"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,318,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">гггг-мм-дд</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <Button x:Name="buttonUpdateModels" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonModels_Click"/>
+            </Grid>
+            <!-- Устройства/Devices -->
+            <Grid x:Name="gridDevices" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Устройство" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxDevicesModels" Background="#ffc5c5" IsEditable="True" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label Content="Стоимость устройства" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только цифры</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxPrice" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,110,0,0" Text="{Binding Path=SelectedItem.Стоимость, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateDevices" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateDevices_Click"/>
+            </Grid>
+            <!-- Клиенты/Clients -->
+            <Grid x:Name="gridClients" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxSurnameClients" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,40,0,0" Text="{Binding Path=SelectedItem.Фамилия, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Имя" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxNameClients" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,110,0,0" Text="{Binding Path=SelectedItem.Имя, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxPatronymicClients" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,180,0,0" Text="{Binding Path=SelectedItem.Отчество, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Мобильный телефон" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,220,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">(Код оператора) XXX-XX-XX</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxPhoneClients" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,250,0,0" Text="{Binding Path=SelectedItem.Телефон, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Адрес проживания" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,290,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Город, Улица, дом-квартира</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxAddresClients" MaxLength="35" HorizontalAlignment="Left" Height="30" Margin="10,320,0,0" Text="{Binding Path=SelectedItem.Адрес, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateClients" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateClients_Click"/>
+            </Grid>
+            <!-- Сотрудники/Staff -->
+            <Grid x:Name="gridStaff" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Фамилия" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxSurnameStaff" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,40,0,0" Text="{Binding Path=SelectedItem.Фамилия, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Имя" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxNameStaff" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,110,0,0" Text="{Binding Path=SelectedItem.Имя, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Отчество" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxPatronymicStaff" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,180,0,0" Text="{Binding Path=SelectedItem.Отчество, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Мобильный телефон" HorizontalAlignment="Left" Margin="10,220,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,220,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">(Код оператора) XXX-XX-XX</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxPhoneStaff" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,250,0,0" Text="{Binding Path=SelectedItem.Телефон, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Адрес проживания" HorizontalAlignment="Left" Margin="10,290,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,290,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Город, Улица, дом-квартира</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxAddresStaff" MaxLength="35" HorizontalAlignment="Left" Height="30" Margin="10,320,0,0" Text="{Binding Path=SelectedItem.Адрес, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateStaff" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateStaff_Click"/>
+            </Grid>
+            <!-- Поставщики/Suppliers -->
+            <Grid x:Name="gridSuppliers" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Название поставщика" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Рус. и англ. символы</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxSupplier" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,40,0,0" Text="{Binding Path=SelectedItem.Поставщик, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Мобильный телефон" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">(Код оператора) XXX-XX-XX</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxPhoneSupplier" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,110,0,0" Text="{Binding Path=SelectedItem.Телефон, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Label Content="Адрес" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Город, Улица, дом-офис</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxAddresSupplier" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,180,0,0" Text="{Binding Path=SelectedItem.Адрес, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateSupplier" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateSupplier_Click"/>
+            </Grid>
+            <!-- Личные данные -->
+            <Grid x:Name="gridApplications" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="К оплате" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxAppClients" Visibility="Hidden" Background="#ffc5c5" IsEditable="True" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label Content="Объявление" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <TextBox x:Name="textBoxDate" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,35,0,0" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <TextBox x:Name="textBoxEVENT" HorizontalAlignment="Left" Height="213" Margin="10,114,0,0" Text="29.04 состоится медицинский осмотр во всех группах" VerticalAlignment="Top" Width="240" Style="{StaticResource EventBox}" VerticalScrollBarVisibility="Visible"/>
+                <ComboBox x:Name="comboBoxAppStaff" Visibility="Hidden" Background="#ffc5c5" IsEditable="True" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Button x:Name="buttonUpdateApplication" Visibility="Hidden" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateApplication_Click"/>
+            </Grid>
+            <!-- Расписание_админ/RecordsOfApplication -->
+            <Grid x:Name="gridRecords" HorizontalAlignment="Left" Height="594" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label x:Name="Sched" Content="Ребенок" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxOrdersStaff" IsEditable="True" Background="White" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <ComboBox Visibility="Hidden" x:Name="comboBoxOrdersDevices" Background="#ffc5c5" IsEditable="True" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label x:Name="gr_sc" Content="Группа" HorizontalAlignment="Left" Margin="11,164,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <TextBox x:Name="textBoxCountOrder" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,193,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <Label  Content="Кабинет" HorizontalAlignment="Left" Margin="11,105,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <TextBox x:Name="textBoxDateOrder" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,134,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateOrders" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,64,0,0" VerticalAlignment="Top" Width="240" Height="36" Style="{StaticResource UpdateButton}" Click="buttonUpdateOrders_Click"/>
+                <TextBox x:Name="textBoxCountOrder_Copy" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,252,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+                <Label x:Name="gr_sc_Copy" Content="Номер урока" HorizontalAlignment="Left" Margin="11,223,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label x:Name="gr_sc_Copy1" Content="Предмет" HorizontalAlignment="Left" Margin="11,282,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxOrdersStaff_Copy" Background="White"  IsEditable="True" HorizontalAlignment="Left" Margin="10,311,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="Search_teachers">
+                    <ComboBoxItem Content="Арифметика"/>
+                    <ComboBoxItem Content="ИЗО"/>
+                    <ComboBoxItem Content="Физкультура"/>
+                    <ComboBoxItem Content="Музыка"/>
+                    <ComboBoxItem Content="Чтение"/>
+                    <ComboBoxItem Content="Занятие с логопедом"/>
+                    <ComboBoxItem Content="Занятие с психологом"/>
+                </ComboBox>
+                <Label x:Name="gr_sc_Copy2" Content="Учитель" HorizontalAlignment="Left" Margin="11,341,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxOrdersStaff_Copy1" Background="White"  IsEditable="True" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label x:Name="gr_sc_Copy3" Content="Воспитатель" HorizontalAlignment="Left" Margin="11,400,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxOrdersStaff_Copy2" Background="White"  IsEditable="True" HorizontalAlignment="Left" Margin="10,429,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label x:Name="gr_sc_Copy4" Content="Няня" HorizontalAlignment="Left" Margin="10,459,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxOrdersStaff_Copy3" Background="White"  IsEditable="True" HorizontalAlignment="Left" Margin="11,488,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Button x:Name="buttonDelete_Copy" HorizontalAlignment="Left" Margin="129,523,0,0" VerticalAlignment="Top" Width="45" Style="{StaticResource WorkButton}" Height="45" Click="buttonDelete_Click" Background="#FFFA4915">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Height="35" Width="35">
+                        <Image Height="16" Width="16" Margin="10,0,36,0" Source="Icons/Delete.png"/>
+                        <TextBlock TextWrapping="NoWrap" Text="" FontSize="13" Foreground="#ffffff"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="buttonAdd_Copy" HorizontalAlignment="Left" Margin="62,523,0,0" VerticalAlignment="Top" Width="45" Style="{StaticResource WorkButton}" Height="45" Click="buttonAdd_Click">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Height="35" Width="45">
+                        <Image Height="16" Width="16" Margin="10,0,32,0" Source="Icons/Add.png"/>
+                        <TextBlock TextWrapping="NoWrap" Text="Ь" FontSize="13" Foreground="#ffffff"/>
+                    </StackPanel>
+                </Button>
+
+            </Grid>
+            <!-- Заказы/Orders -->
+            <Grid x:Name="gridOrders" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+
+            </Grid>
+            <!-- Поставки/Delivery -->
+            <Grid x:Name="gridDelivery" HorizontalAlignment="Left" Height="594" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Вид отображения" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxDeliverySupplier" Background="#f9f9f9" IsEditable="False" IsEnabled="True" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="240" Height="30" >
+                    <ComboBoxItem Content="Все родители"/>
+                    <ComboBoxItem Content="Только должники"/>
+                </ComboBox>
+                <Button x:Name="buttonUpdateDelivery" Visibility="Visible" Content="ОТОБРАЗИТЬ" HorizontalAlignment="Left" Margin="10,75,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateDelivery_Click"/>
+                <Button x:Name="buttonUpdateDeliverySet" Visibility="Visible" Content="ИЗМЕНИТЬ" HorizontalAlignment="Left" Margin="10,520,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButtonRed}" Click="buttonUpdateDeliverySet_Click"/>
+                <TextBox x:Name="textBoxCost" MaxLength="50" BorderBrush="#15a4fa" HorizontalAlignment="Left" Height="38" Margin="10,477,0,0" Padding="15,0,0,0" Text="" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" GotFocus="textBoxFilter_GotFocus" LostFocus="textBoxFilter_LostFocus" TextChanged="textBoxFilter_TextChanged" IsReadOnly="False"/>
+                <Label Content="Сумма к оплате" HorizontalAlignment="Left" Margin="10,443,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+
+            </Grid>
+            <!-- Склад/Storage -->
+            <Grid x:Name="gridStorage" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+
+            </Grid>
+            <!-- Продажи/Sales -->
+            <Grid x:Name="gridSales" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Заявка" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxSaleApp" Background="#ffc5c5" IsEditable="True" IsEnabled="False" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label Content="Дата продажи" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">ТДД.ММ.ГГГГ ЧЧ:ММ:СС</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxDateSale" MaxLength="25" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="10,110,0,0" Text="{Binding Path=SelectedItem.Дата продажи, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateSales" Visibility="Hidden" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateSales_Click"/>
+            </Grid>
+            <!-- Содержимое продаж/RecordsOfSales -->
+            <Grid x:Name="gridRecordsOfSales" HorizontalAlignment="Left" Height="555" Margin="0,0,0,0" VerticalAlignment="Top" Width="260" Visibility="Hidden">
+                <Label Content="Продажа" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxRecordsOfSalesSale" Background="#ffc5c5" IsEditable="True" IsEnabled="False" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label Content="Запись заявки" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <ComboBox x:Name="comboBoxRecordsOfSalesRecords" Background="#ffc5c5" IsEditable="True" IsEnabled="False" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="240" Height="30" SelectionChanged="SelectionChangedCheck"/>
+                <Label x:Name="labelCountDevicesInRecords" Content="Количество (доступно 0 шт.)" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+                <Label Content="(?)" HorizontalAlignment="Left" Margin="224,150,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="236">
+                            <TextBlock Foreground="#ffffff" FontSize="13">Только цифры</TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+                <TextBox x:Name="textBoxCountRecords" MaxLength="25" IsReadOnly="True" HorizontalAlignment="Left" Height="30" Margin="10,180,0,0" Text="{Binding Path=SelectedItem.Количество, ElementName=dataGrid, Mode=OneWay}" VerticalAlignment="Top" Width="240" Style="{StaticResource RightTextBox}" PreviewTextInput="PreviewTextInputCheck" PreviewKeyDown="PreviewKeyDownCheck" TextChanged="TextChangedCheck"/>
+                <Button x:Name="buttonUpdateRecordsOfSales" Visibility="Hidden" Content="ОБНОВИТЬ ТАБЛИЦУ" HorizontalAlignment="Left" Margin="10,510,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource UpdateButton}" Click="buttonUpdateRecordsOfSales_Click"/>
+            </Grid>
+            <!--<Button x:Name="buttonCancel" Content="ОТМЕНА" HorizontalAlignment="Left" Margin="10,465,0,0" VerticalAlignment="Top" Width="240" Height="35" Style="{StaticResource CancelButton}" Visibility="Hidden" Click="buttonCancel_Click"/>-->
+        </Grid>
+        <Grid x:Name="grid_main" HorizontalAlignment="Left" Height="559" Margin="200,70,0,0" VerticalAlignment="Top" Width="740" Background="#f9f9f9" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="27*"/>
+                <ColumnDefinition Width="22*"/>
+                <ColumnDefinition Width="692*"/>
+            </Grid.ColumnDefinitions>
+            <TextBox x:Name="textBoxFilter" Visibility="Hidden" MaxLength="30" BorderBrush="#15a4fa" Height="35" Margin="10,10,250,0" Padding="15,0,0,0" Text="Поиск..." VerticalAlignment="Top" Style="{StaticResource RightTextBox}" GotFocus="textBoxFilter_GotFocus" LostFocus="textBoxFilter_LostFocus" TextChanged="textBoxFilter_TextChanged" Grid.ColumnSpan="3"/>
+            <Button x:Name="buttonReset" Visibility="Hidden" HorizontalAlignment="Left" Margin="448,10,0,0" VerticalAlignment="Top" Width="234" Style="{StaticResource WorkButton}" Height="35" Click="buttonReset_Click" Grid.Column="2">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Image Height="16" Width="16" Margin="10,0,35,0" Source="Icons/Reset.png"/>
+                    <TextBlock TextWrapping="NoWrap" Text="СБРОСИТЬ ПОИСК" FontSize="13" Foreground="#ffffff"/>
+                </StackPanel>
+            </Button>
+            <DataGrid x:Name="dataGrid" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Height="410" Width="720" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="False" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="3"/>
+            <Button x:Name="buttonReport" HorizontalAlignment="Left" Margin="10,475,0,0" VerticalAlignment="Top" Width="235" Style="{StaticResource WorkButton}" Height="35" Click="buttonReport_Click" Grid.ColumnSpan="3">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Image Height="16" Width="16" Margin="10,0,20,0" Source="Icons/Report.png"/>
+                    <TextBlock TextWrapping="NoWrap" Text="ИЗМЕНИТЬ" FontSize="13" Foreground="#ffffff"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="buttonAdd" HorizontalAlignment="Left" Margin="204,475,0,0" VerticalAlignment="Top" Width="236" Style="{StaticResource WorkButton}" Height="35" Click="buttonAdd_Click" Grid.Column="2">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Image Height="16" Width="16" Margin="10,0,32,0" Source="Icons/Add.png"/>
+                    <TextBlock TextWrapping="NoWrap" Text="ДОБАВИТЬ ЗАПИСЬ" FontSize="13" Foreground="#ffffff"/>
+                </StackPanel>
+            </Button>
+            <Button x:Name="buttonDelete" HorizontalAlignment="Left" Margin="448,475,0,0" VerticalAlignment="Top" Width="234" Style="{StaticResource WorkButton}" Height="35" Click="buttonDelete_Click" Grid.Column="2">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                    <Image Height="16" Width="16" Margin="10,0,36,0" Source="Icons/Delete.png"/>
+                    <TextBlock TextWrapping="NoWrap" Text="УДАЛИТЬ ЗАПИСЬ" FontSize="13" Foreground="#ffffff"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Grid x:Name="grid_main_person_info" HorizontalAlignment="Left" Height="520" Margin="200,70,0,0" VerticalAlignment="Top" Width="740" Background="#f9f9f9" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="109*"/>
+                <ColumnDefinition Width="631*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid x:Name="dataGrid_kids" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="1,61,0,0" VerticalAlignment="Top" Height="110" Width="480" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="False" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Grid.Column="1"/>
+            <Label Content="Дети:" HorizontalAlignment="Left" Margin="217,29,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#65748d" Grid.Column="1"/>
+            <Label Content="Родители" HorizontalAlignment="Left" Margin="203,171,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#65748d" Grid.Column="1" Height="30" Width="96"/>
+            <Label Content="Мать:" HorizontalAlignment="Left" Margin="15,206,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#65748d"/>
+            <Label Content="Отец:" HorizontalAlignment="Left" Margin="16,257,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#65748d"/>
+            <Label Content="Задолжность:" HorizontalAlignment="Left" Margin="118,361,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#65748d" Grid.Column="1"/>
+            <TextBox x:Name="textBoxMother" MaxLength="50" BorderBrush="#15a4fa" HorizontalAlignment="Left" Height="35" Margin="1,206,0,0" Padding="15,0,0,0" Text="Мать..." VerticalAlignment="Top" Width="480" Style="{StaticResource RightTextBox}" GotFocus="textBoxFilter_GotFocus" LostFocus="textBoxFilter_LostFocus" TextChanged="textBoxFilter_TextChanged" IsReadOnly="True" Grid.Column="1"/>
+            <TextBox x:Name="textBoxFather" MaxLength="50" BorderBrush="#15a4fa" HorizontalAlignment="Left" Height="35" Margin="1,261,0,0" Padding="15,0,0,0" Text="Отец..." VerticalAlignment="Top" Width="480" Style="{StaticResource RightTextBox}" GotFocus="textBoxFilter_GotFocus" LostFocus="textBoxFilter_LostFocus" TextChanged="textBoxFilter_TextChanged" IsReadOnly="True" Grid.Column="1"/>
+            <Label x:Name="Billing" Content="неизвестно" HorizontalAlignment="Left" Margin="249,361,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#65748d" Grid.Column="1"/>
+
+        </Grid>
+        <Grid x:Name="grid_main_schedule" HorizontalAlignment="Left" Height="520" Margin="200,70,0,0" VerticalAlignment="Top" Width="740" Background="#f9f9f9" Visibility="Hidden">
+            <ScrollViewer>
+                <Grid x:Name="week" >
+                    <Label Content="ПОНЕДЕЛЬНИК" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="179"/>
+
+                    <DataGrid x:Name="Monday" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Height="100" Width="730" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="True" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+                    <DataGrid x:Name="Tuesday" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,200,0,0" VerticalAlignment="Top" Height="100" Width="730" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="True" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+                    <DataGrid x:Name="Wensday" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,350,0,0" VerticalAlignment="Top" Height="100" Width="730" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="True" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+                    <DataGrid x:Name="Thursday" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,500,0,0" VerticalAlignment="Top" Height="100" Width="730" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="True" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+                    <DataGrid x:Name="Friday" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,650,0,0" VerticalAlignment="Top" Height="100" Width="730" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="True" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+                    <Label Content="ВТОРНИК" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="179"/>
+                    <Label Content="СРЕДА" HorizontalAlignment="Left" Margin="10,310,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="179"/>
+                    <Label Content="ЧЕТВЕРГ" HorizontalAlignment="Left" Margin="10,460,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="179"/>
+                    <Label Content="ПЯТНИЦА" HorizontalAlignment="Left" Margin="10,615,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="179"/>
+
+                </Grid>
+            </ScrollViewer>
+
+
+        </Grid>
+        <Grid x:Name="grid_main_pay" HorizontalAlignment="Left" Height="520" Margin="200,70,0,0" VerticalAlignment="Top" Width="740" Background="#f9f9f9" Visibility="Hidden">
+            <Label Content="Сводные данные по оплате" HorizontalAlignment="Left" Margin="246,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="262"/>
+
+            <DataGrid x:Name="Parent_pay_table" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Height="470" Width="740" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="False" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+
+
+
+        </Grid>
+
+        <Grid x:Name="grid_admin_info" HorizontalAlignment="Left" Height="520" Margin="200,70,0,0" VerticalAlignment="Top" Width="740" Background="#f9f9f9" Visibility="Hidden">
+            <Label Content="Информация" HorizontalAlignment="Left" Margin="286,10,0,0" VerticalAlignment="Top" FontSize="18" FontWeight="Bold" Foreground="#65748d" Height="35" Width="179"/>
+
+            <DataGrid x:Name="Admin_i" Background="#eceff5" RowHeaderWidth="0" AlternatingRowBackground="#fbfcfe" HorizontalAlignment="Left" Margin="0,50,0,0" VerticalAlignment="Top" Height="100" Width="730" SelectionChanged="dataGrid_SelectionChanged" AutoGeneratingColumn="dataGrid_AutoGeneratingColumn" GridLinesVisibility="Horizontal" CanUserReorderColumns="False" CanUserResizeColumns="False" CanUserSortColumns="False" SelectionMode="Single" CanUserResizeRows="False" IsReadOnly="True" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle}" HorizontalGridLinesBrush="#dde8ef" CellStyle="{DynamicResource DataGridCellStyle}" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible"/>
+
+
+        </Grid>
+
+        <Grid HorizontalAlignment="Left" Height="594" VerticalAlignment="Top" Width="200" Background="#354052" Margin="0,35,0,0">
+            <Button x:Name="buttonApplications" Content="ЛИЧНЫЕ ДАННЫЕ" HorizontalAlignment="Left" Margin="0,43,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonApplication}" Click="buttonApplications_Click"/>
+            <Button x:Name="buttonRecords" Content="РАСПИСАНИЕ" HorizontalAlignment="Left" Margin="0,79,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonRecords}" Click="buttonRecords_Click"/>
+            <Button x:Name="buttonOrders" Visibility="Hidden" Content="СОТРУДНИКИ" HorizontalAlignment="Left" Margin="0,249,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonOrders}" Click="buttonOrders_Click"/>
+            <Button x:Name="buttonDelivery" Content="ОПЛАТА" HorizontalAlignment="Left" Margin="0,115,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonDelivery}" Click="buttonDelivery_Click"/>
+            <Button x:Name="buttonStorage" Content="О СОТРУДНИКЕ" HorizontalAlignment="Left" Margin="0,43,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonApplication}" Click="buttonStorage_Click"/>
+            <Button x:Name="buttonEditKid" Visibility="Hidden"  Content="ДЕТИ" HorizontalAlignment="Left" Margin="0,338,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonStorage}" Click="buttonEditKid_Click"/>
+
+            <Button x:Name="buttonSale" Visibility="Hidden" Content="убрать" HorizontalAlignment="Left" Margin="0,285,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonSale}" Click="buttonSale_Click"/>
+            <Button x:Name="buttonRecordsOfSales" Visibility="Hidden" Content="убрать" HorizontalAlignment="Left" Margin="0,326,0,0" VerticalAlignment="Top" Style="{StaticResource LeftMenuButtonRecordsOfSales}" Click="buttonRecordsOfSales_Click"/>
+            <Label x:Name="labelCount"  Visibility="Hidden" Content="0" HorizontalAlignment="Left" Margin="130,449,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#88d969"/>
+            <Label x:Name="labelDate" Visibility="Hidden" Content="Дата" HorizontalAlignment="Left" Margin="10,493,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#88d969"/>
+            <Label x:Name="labelTime" Visibility="Hidden" Content="00:00:00" HorizontalAlignment="Left" Margin="117,519,0,0" VerticalAlignment="Top" FontSize="13" FontWeight="Bold" Foreground="#88d969"/>
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="36" Margin="200,35,0,0" VerticalAlignment="Top" Width="740">
+            <Button x:Name="buttonBrands"   Visibility="Hidden" Content="УЧИТЕЛЯ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Style="{StaticResource TopButton}" Click="buttonBrands_Click" Margin="0,1,0,0"/>
+            <Button x:Name="buttonTypes"   Visibility="Hidden" Content="ВОСПИТАТЕЛИ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="86,1,0,0" Style="{StaticResource TopButton}" Click="buttonTypes_Click"/>
+            <Button x:Name="buttonModels"   Visibility="Hidden" Content="НЯНИ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="202,0,0,0" Style="{StaticResource TopButton}" Click="buttonModels_Click"/>
+            <Button x:Name="buttonDevices"   Visibility="Hidden" Content="ВРАЧИ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="268,0,0,0" Style="{StaticResource TopButton}" Click="buttonDevices_Click"/>
+            <Button x:Name="buttonClients"  Visibility="Hidden" Content="вапп" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="410,1,0,0" Style="{StaticResource TopButton}" Click="buttonClients_Click"/>
+            <Button x:Name="buttonStaff"   Visibility="Hidden" Content="СОпрркИ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="500,1,0,0" Style="{StaticResource TopButton}" Click="buttonStaff_Click"/>
+            <Button x:Name="buttonSuppliers"   Visibility="Hidden" Content="ПреноглшИ" HorizontalAlignment="Left" VerticalAlignment="Top" Height="35" Margin="614,1,0,0" Style="{StaticResource TopButton}" Click="buttonSuppliers_Click"/>
+            <Border BorderBrush="#d8dfe5" BorderThickness="1" HorizontalAlignment="Left" Height="1" Margin="0,35,0,0" VerticalAlignment="Top" Width="740"/>
+        </Grid>
+        <Label x:Name="hello" Content="Здравствуйте " HorizontalAlignment="Left" Margin="501,215,0,0" VerticalAlignment="Top" FontSize="25" Foreground="#FF354052"/>
+    </Grid>
+</Window>

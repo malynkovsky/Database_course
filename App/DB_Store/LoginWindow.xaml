@@ -1,0 +1,28 @@
+﻿<Window x:Class="DB_Store.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_Store"
+        mc:Ignorable="d"
+        Title="LoginWindow"
+        Height="266.935"
+        Width="324"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid x:Name="grid" HorizontalAlignment="Left" Height="267" VerticalAlignment="Top" Width="324" Background="#354052" MouseDown="grid_MouseDown">
+            <Button x:Name="buttonClose" HorizontalAlignment="Left" Height="35" Margin="289,0,0,0" VerticalAlignment="Top" Width="35" Style="{StaticResource TitleBarButtonClose}" Click="buttonClose_Click">
+                <Image HorizontalAlignment="Left" Height="18" Width="18" Source="Icons\Close.png"/>
+            </Button>
+            <TextBox x:Name="textBoxLogin" HorizontalAlignment="Left" Height="40" Margin="20,55,0,0" Text="Имя пользователя" VerticalAlignment="Top" Width="285" MaxLength="35" Style="{StaticResource LoginTextBox}" PreviewTextInput="textBoxLogin_PreviewTextInput" PreviewKeyDown="textBoxLogin_PreviewKeyDown" LostFocus="textBoxLogin_LostFocus" GotFocus="textBoxLogin_GotFocus"/>
+            <PasswordBox x:Name="passwordBox" Password="Пароль" HorizontalAlignment="Left" Margin="20,95,0,0" VerticalAlignment="Top" Width="285" Height="40" MaxLength="35" Style="{StaticResource PasswordBox}" GotFocus="passwordBox_GotFocus" LostFocus="passwordBox_LostFocus"/>
+            <Button x:Name="buttonLogin" Content="ВОЙТИ" HorizontalAlignment="Left" Margin="20,145,0,0" VerticalAlignment="Top" Width="285" Height="35" Style="{StaticResource LoginButton}" Click="buttonLogin_Click"/>
+            <Label Content="Авторизация" HorizontalAlignment="Left" Margin="20,16,0,0" VerticalAlignment="Top" Foreground="#ffffff" FontSize="18"/>
+            <Button x:Name="buttonReg" Content="РЕГИСТРАЦИЯ" HorizontalAlignment="Left" Margin="20,185,0,0" VerticalAlignment="Top" Width="285" Height="35" Style="{StaticResource RegButton}" Click="ButtonReg_Click"/>
+            <Button x:Name="buttonForget" Content="Забыли пароль?" Visibility="Hidden" HorizontalAlignment="Left" Margin="111,231,0,0" VerticalAlignment="Top" Width="108" Height="17" Style="{StaticResource ForgetButton}" Click="buttonLogin_Click"/>
+        </Grid>
+    </Grid>
+</Window>

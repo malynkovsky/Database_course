@@ -1,0 +1,132 @@
+﻿<Window x:Class="DB_Store.NewClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DB_Store"
+        mc:Ignorable="d"
+        Title="NewClientWindow"
+        Height="566"
+        Width="610"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid x:Name="titleBar" HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="610" Background="#272f3c" MouseDown="titleBar_MouseDown">
+            <Label Content="Регистрация родителей - заполните данные" HorizontalAlignment="Left" Margin="4,3,0,0" VerticalAlignment="Top" FontSize="14" Foreground="#ffffff"/>
+            <Button x:Name="buttonClose" HorizontalAlignment="Left" Height="35" Margin="575,0,0,0" VerticalAlignment="Top" Width="35" Style="{StaticResource TitleBarButtonClose}" Click="buttonClose_Click">
+                <Image HorizontalAlignment="Left" Height="18" Width="18" Source="Icons\Close.png"/>
+            </Button>
+        </Grid>
+        <Grid x:Name="gridClients" HorizontalAlignment="Left" Height="531" Margin="0,35,0,0" VerticalAlignment="Top" Width="610" Background="#f3f2f2">
+            <Border BorderBrush="#272f3c" BorderThickness="1,0,1,1" HorizontalAlignment="Left" Height="530" VerticalAlignment="Top" Width="610" Margin="0,1,0,0">
+                <Label Content="(?)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1" Margin="263,44,0,0">
+                    <Label.ToolTip>
+                        <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                            <TextBlock Foreground="#ffffff" FontSize="13"><Run Text="Только рус. символы"/></TextBlock>
+                        </ToolTip>
+                    </Label.ToolTip>
+                </Label>
+            </Border>
+            <Label Content="Мама" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b" Margin="144,10,0,0"/>
+            <Label Content="Папа" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b" Margin="423,10,0,0"/>
+            <Label Content="(?)" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1" Margin="574,45,0,0">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13"><Run Text="Только рус. символы"/></TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <Label Content="Фамилия" HorizontalAlignment="Left" Margin="11,45,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b" RenderTransformOrigin="0.486,-0.793"/>
+
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="265,109,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="574,109,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <TextBox x:Name="textBoxSurnameMother" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="11,74,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+            <TextBox x:Name="textBoxSurnameFather" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="320,74,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+
+            <Label Content="Имя" HorizontalAlignment="Left" Margin="11,109,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+            <TextBox x:Name="textBoxNameMother" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="11,138,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+            <TextBox x:Name="textBoxNameFather" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="320,138,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+
+            <Label Content="Отчество" HorizontalAlignment="Left" Margin="11,173,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="265,173,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="574,173,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Только рус. символы</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <TextBox x:Name="textBoxPatronymicMother" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="11,202,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+            <TextBox x:Name="textBoxPatronymicFather" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="320,202,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+
+            <Label Content="Мобильный телефон" HorizontalAlignment="Left" Margin="11,237,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="265,237,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">В любом формате</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="574,237,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">В любом формате</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <TextBox x:Name="textBoxPhoneMother" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="10,266,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+            <TextBox x:Name="textBoxPhoneFather" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="320,266,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+
+            <Label Content="Паспорт" HorizontalAlignment="Left" Margin="11,301,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+            <Label Content="Пароль" HorizontalAlignment="Left" Margin="144,405,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#6f7a8b"/>
+
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="265,301,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Серия и номер без пробела</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="488,376,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Мин.8 англ.символов, где есть загл.буквы</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <Label Content="(?)" HorizontalAlignment="Left" Margin="574,301,0,0" VerticalAlignment="Top" FontSize="14" FontWeight="Bold" Foreground="#15a4fa" ToolTipService.InitialShowDelay="1">
+                <Label.ToolTip>
+                    <ToolTip Placement="Left" HorizontalOffset="24" VerticalOffset="32" Background="#15a4fa" BorderThickness="0" Opacity="0.9" Height="26" Width="276">
+                        <TextBlock Foreground="#ffffff" FontSize="13">Серия и номер без пробела</TextBlock>
+                    </ToolTip>
+                </Label.ToolTip>
+            </Label>
+            <TextBox x:Name="textBoxPassportMother" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="11,330,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+            <TextBox x:Name="textBoxPassortFather" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="320,330,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+            <TextBox x:Name="textBoxPasswordReg" MaxLength="25" HorizontalAlignment="Left" Height="30" Margin="234,405,0,0" VerticalAlignment="Top" Width="280" Style="{StaticResource RightTextBox}" TextChanged="TextChangedCheck"/>
+
+            <Button x:Name="buttonAdd" Content="ДОБАВИТЬ" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="155,461,0,0" VerticalAlignment="Top" Foreground="#ffffff" Width="135" Style="{StaticResource WorkButtonGreen}" Height="35" Click="buttonAdd_Click"/>
+            <Button x:Name="buttonCancel" Content="ОТМЕНА" HorizontalAlignment="Left" Margin="320,461,0,0" VerticalAlignment="Top" Width="135" Style="{StaticResource CancelButton}" Height="35" Click="buttonCancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>
